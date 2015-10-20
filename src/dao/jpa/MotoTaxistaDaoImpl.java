@@ -44,5 +44,21 @@ public class MotoTaxistaDaoImpl implements MotoTaxistaDao {
 		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<MotoTaxista> buscarPorNome(String nome){
+	
+	String s = "SELECT a FROM MotoTaxista a WHERE 1=1";
+	
+	if (nome != null)
+	s = s + " AND a.nome LIKE :n1";
+	
+	Query query = em.createQuery(s);
+	
+	if(nome != null)
+	query.setParameter("n1", "%"+nome+"%");
+	
+	return query.getResultList();
+	}
 
 }

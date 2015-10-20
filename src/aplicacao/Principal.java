@@ -1,6 +1,7 @@
 package aplicacao;
 
 import java.text.ParseException;
+import java.util.List;
 import java.util.Scanner;
 
 import dominio.MotoTaxista;
@@ -49,14 +50,34 @@ public class Principal {
 			case 9:
 				System.out.println("Caso de uso ainda não implementado - Diego");
 			case 10:
-				System.out.println("Caso de uso ainda não implementado - Roberto");
+				System.out.println("UC10: Pesquisar MotoTaxistas");
+				System.out.println("\nDigite o nome do moto taxista: ");
+				String nome = sc.nextLine();
+
+				if (nome.equals(""))
+					nome = null;
+
+				List<MotoTaxista> lista = motoTaxistaServico.buscarPorNome(nome);
+				System.out.println("Resultado da Pesquisa");
+
+				for (MotoTaxista x : lista) {
+					System.out.println(x.getNome() + ", " + x.getPlaca() + ", "
+							+ x.getDisponivel() + ", " + x.getEmpresa().getNomeFantasia()+"\n");	
+				}
+				break;
+				
 			case 11:
 				System.out.println("Caso de uso ainda não implementado - Tiago");
 			case 12:
 				System.out.println("Caso de uso ainda não implementado - Tiago");
+			case 13:
+				System.out.println("Caso de uso ainda não implementado - Anna");
+			case 14:
+				System.out.println("Programa Encerrado.");
+				break;
 			}
 
-		} while (op != 10);
+		} while (op != 14);
 
 	}
 

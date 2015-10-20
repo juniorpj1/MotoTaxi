@@ -41,4 +41,10 @@ public class MotoTaxistaServicoImpl implements MotoTaxistaServico {
 		return dao.buscarTodos();
 	}
 
+	@Override
+	public List<MotoTaxista> buscarPorNome(String nome){
+		return dao.buscarPorNome(nome);
+	}
+	
+
 }
