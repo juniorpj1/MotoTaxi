@@ -61,11 +61,11 @@ public class Principal {
 				System.out.println("Resultado da Pesquisa");
 
 				for (MotoTaxista x : lista) {
-					System.out.println(x.getNome() + ", " + x.getPlaca() + ", "
-							+ x.getDisponivel() + ", " + x.getEmpresa().getNomeFantasia()+"\n");	
+					System.out.println(x.getNome() + ", " + x.getPlaca() + ", " + x.getDisponivel() + ", "
+							+ x.getEmpresa().getNomeFantasia() + "\n");
 				}
 				break;
-				
+
 			case 11:
 				System.out.println("Caso de uso ainda não implementado - Tiago");
 			case 12:
