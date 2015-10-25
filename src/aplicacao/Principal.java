@@ -63,7 +63,16 @@ public class Principal {
 			case 4:
 				System.out.println("Caso de uso ainda não implementado - Ana");
 			case 5:
-				System.out.println("Caso de uso ainda não implementado - Aparício");
+				System.out.println("\nDigite o código do Moto-Taxista: ");
+				cod = Integer.parseInt(sc.nextLine());
+
+				MotoTaxista mot2 = motoTaxistaServico.buscar(cod);
+
+				if (mot2 == null) {
+					System.out.println("Código Inexistente!");
+				} else {
+					System.out.println("Média do mototaxista " + mot2.getNome() + ": " + mot2.media());
+				}
 			case 6:
 				System.out.println("Caso de uso ainda não implementado - Ana");
 			case 7:
