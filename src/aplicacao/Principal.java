@@ -1,9 +1,12 @@
 package aplicacao;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import dominio.Empresa;
 import dominio.MotoTaxista;
 import servico.AvaliacaoServico;
 import servico.BandeiradaServico;
@@ -32,7 +35,27 @@ public class Principal {
 
 			switch (op) {
 			case 1:
-				System.out.println("Caso de uso ainda não implementado - Aparício");
+				System.out.println("\nEntre com o código da Empresa: ");
+				cod = Integer.parseInt(sc.nextLine());
+
+				Empresa emp = empresaServico.buscar(cod);
+
+				if (emp == null) {
+					System.out.println("Código Inexistente!");
+				} else {
+					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+					System.out.println("\nInforme a Data Inicial: ");
+					String d1 = sc.nextLine();
+					Date dataInicial = sdf.parse(d1);
+
+					System.out.println("\nInforme a Data Final: ");
+					String d2 = sc.nextLine();
+					Date dataFinal = sdf.parse(d2);
+
+					System.out.println("Chamado(s) com data inicial de " + dataInicial + " e data final de " + dataFinal
+							+ " da empresa " + emp.getNomeFantasia() + ": "
+							+ emp.corridasPorPeriodo(dataInicial, dataFinal));
+				}
 			case 2:
 				System.out.println("Caso de uso ainda não implementado - Roberto");
 			case 3:
