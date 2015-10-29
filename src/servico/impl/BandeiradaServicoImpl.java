@@ -21,7 +21,6 @@ public class BandeiradaServicoImpl implements BandeiradaServico {
 		EM.getLocalEm().getTransaction().begin();
 		dao.inserirAtualizar(x);
 		EM.getLocalEm().getTransaction().commit();
-
 	}
 
 	@Override
