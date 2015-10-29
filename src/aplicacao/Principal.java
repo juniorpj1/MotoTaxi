@@ -2,6 +2,7 @@ package aplicacao;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -15,6 +16,7 @@ import servico.ClienteServico;
 import servico.EmpresaServico;
 import servico.MotoTaxistaServico;
 import servico.ServicoFactory;
+import servico.impl.EmpresaServicoImpl;
 
 @SuppressWarnings("unused")
 public class Principal {
@@ -56,8 +58,22 @@ public class Principal {
 							+ " da empresa " + emp.getNomeFantasia() + ": "
 							+ emp.corridasPorPeriodo(dataInicial, dataFinal));
 				}
+				break;
 			case 2:
-				System.out.println("Caso de uso ainda não implementado - Roberto");
+				double media = 0.0;
+				System.out.println("\nEntre com o valor da média : ");
+				media = Double.parseDouble(sc.nextLine());
+				
+				Empresa emp1 = new Empresa();
+				
+				if(emp1.mototaxistasComMediaAbaixoDe(media) != null){
+					List<MotoTaxista> mot2 = motoTaxistaServico.buscarTodos();
+					System.out.println(mot2);
+				}else{
+					System.out.println("Não há nenhum mototaxista abaixo da média");
+				}
+				
+				break;
 			case 3:
 				System.out.println("Caso de uso ainda não implementado - Diego");
 			case 4:
@@ -73,6 +89,7 @@ public class Principal {
 				} else {
 					System.out.println("Média do mototaxista " + mot2.getNome() + ": " + mot2.media());
 				}
+				break;
 			case 6:
 				System.out.println("Caso de uso ainda não implementado - Ana");
 			case 7:
