@@ -24,7 +24,7 @@ public class Principal {
 	public static void main(String[] args) throws ParseException {
 
 		Scanner sc = new Scanner(System.in);
-		int cod, op;
+		int cod, op, oi;
 		
 		AvaliacaoServico avaliacaoServico = ServicoFactory.criarAvaliacaoServico();
 		BandeiradaServico bandeiradaServico = ServicoFactory.criarBandeiradaServico();
