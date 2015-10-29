@@ -1,5 +1,6 @@
 package aplicacao;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -7,6 +8,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import dominio.Bandeirada;
+import dominio.Cliente;
 import dominio.Empresa;
 import dominio.MotoTaxista;
 import servico.AvaliacaoServico;
@@ -24,8 +27,7 @@ public class Principal {
 	public static void main(String[] args) throws ParseException {
 
 		Scanner sc = new Scanner(System.in);
-		int cod, op, oi;
-		
+		int cod, op, opcao;
 		AvaliacaoServico avaliacaoServico = ServicoFactory.criarAvaliacaoServico();
 		BandeiradaServico bandeiradaServico = ServicoFactory.criarBandeiradaServico();
 		ChamadoServico chamadoServico = ServicoFactory.criarChamadoServico();
@@ -76,9 +78,11 @@ public class Principal {
 				
 				break;
 			case 3:
-			
+				System.out.println("Caso de uso ainda não implementado - Diego");
+				break;
 			case 4:
 				System.out.println("Caso de uso ainda não implementado - Ana");
+				break;
 			case 5:
 				System.out.println("\nDigite o código do Moto-Taxista: ");
 				cod = Integer.parseInt(sc.nextLine());
@@ -93,12 +97,102 @@ public class Principal {
 				break;
 			case 6:
 				System.out.println("Caso de uso ainda não implementado - Ana");
+				break;
 			case 7:
-				System.out.println("Caso de uso ainda não implementado - Bruno");
+				System.out.println("Caso de uso ainda não implementado - Ana");
+				break;
 			case 8:
-				System.out.println("Caso de uso ainda não implementado - Bruno");
+				BigDecimal valor6, valor7;
+				Double v6, v7;
+				int codigo;
+				do{
+					System.out.println("\nEscolha uma das opções do menu abaixo:");
+					System.out.println("1 - Inserir");
+					System.out.println("2 - Alterar");
+					System.out.println("3 - Pesquisar");
+					System.out.println("4 - Excluir");
+					System.out.println("5 - Sair");
+					opcao = Integer.parseInt(sc.nextLine());
+					
+					switch (opcao) {
+					case 1:									
+						System.out.println("Digite o valor inicial:");
+						v6 = Double.parseDouble(sc.nextLine());
+						System.out.println("Digite o valor por KM rodado:");
+						v7 = Double.parseDouble(sc.nextLine());
+						
+						valor6 = new BigDecimal(v6);
+						valor7 = new BigDecimal(v7);
+						
+						Bandeirada band = new Bandeirada(null, valor6, valor7);
+						bandeiradaServico.inserirAtualizar(band);
+						
+						break;
+					case 2:		
+						System.out.println("Digite o código da bandeirada:");
+						codigo = Integer.parseInt(sc.nextLine());
+						
+						Bandeirada bande = bandeiradaServico.buscar(codigo);
+						
+								if(bande == null){
+									System.out.println("Erro: Bandeirada não encontrada. Encontre outro valor!!!");
+		
+								}else{
+									System.out.println("Digite o novo valor inicial:");
+									v6 = Double.parseDouble(sc.nextLine());
+									System.out.println("Digite o novo valor por KM rodado:");
+									v7 = Double.parseDouble(sc.nextLine());
+									
+									valor6 = new BigDecimal(v6);
+									valor7 = new BigDecimal(v7);
+									
+									Bandeirada bandei = new Bandeirada(codigo, valor6, valor7);
+									bandeiradaServico.inserirAtualizar(bandei);
+									System.out.println("Bandeirada " + bandei.getCodBandeirada() + "alterado com sucesso!!!");
+							}
+						break;
+					case 3:
+						System.out.println("Digite o código da bandeirada:");
+						codigo = Integer.parseInt(sc.nextLine());
+						
+						Bandeirada bandeir = bandeiradaServico.buscar(codigo);
+						
+								if(bandeir == null){
+									System.out.println("Erro: Bandeirada não encontrada. Digite outro valor válido!!!");
+		
+								}else{
+									bandeiradaServico.buscar(codigo);
+									System.out.println("Código da bandeirada:" + bandeir.getCodBandeirada());
+									System.out.println("Valor inicial:" + bandeir.getValorInicial());
+									System.out.println("Valor do KM rodado:" + bandeir.getValorKM());
+							}
+						break;
+					case 4:
+						System.out.println("Digite o código da bandeirada:");
+						codigo = Integer.parseInt(sc.nextLine());
+						
+						Bandeirada bandeira = bandeiradaServico.buscar(codigo);
+						
+								if(bandeira == null){
+									System.out.println("Erro: Bandeirada não encontrada. Encontre outro valor!!!");
+		
+								}else{
+									bandeiradaServico.excluir(bandeira);
+									System.out.println("Bandeirada excluída com sucesso!!!");
+							}
+						break;
+					case 5:
+						System.out.println("Alterações nas bandeiradas finalizadas.\n");
+						break;
+						
+					default:
+						System.out.println("Opção inválida!!!");
+					}
+				} while(opcao != 5);
+				break;
 			case 9:
 				System.out.println("Caso de uso ainda não implementado - Diego");
+				break;
 			case 10:
 				System.out.println("UC10: Pesquisar MotoTaxistas");
 				System.out.println("\nDigite o nome do moto taxista: ");
@@ -118,10 +212,13 @@ public class Principal {
 
 			case 11:
 				System.out.println("Caso de uso ainda não implementado - Tiago");
+				break;
 			case 12:
 				System.out.println("Caso de uso ainda não implementado - Tiago");
+				break;
 			case 13:
 				System.out.println("Caso de uso ainda não implementado - Anna");
+				break;
 			case 14:
 				System.out.println("Programa Encerrado.");
 				break;
