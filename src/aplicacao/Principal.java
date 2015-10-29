@@ -76,20 +76,7 @@ public class Principal {
 				
 				break;
 			case 3:
-				double media = 0.0;
-				System.out.println("\nEntre com o valor da média : ");
-				media = Double.parseDouble(sc.nextLine());
-				
-				Empresa emp1 = new Empresa();
-				
-				if(emp1.mototaxistasComMediaAbaixoDe(media) != null){
-					List<MotoTaxista> mot2 = motoTaxistaServico.buscarTodos();
-					System.out.println(mot2);
-				}else{
-					System.out.println("Não há nenhum mototaxista abaixo da média");
-				}
-				
-				break;
+			
 			case 4:
 				System.out.println("Caso de uso ainda não implementado - Ana");
 			case 5:
