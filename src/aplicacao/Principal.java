@@ -118,6 +118,7 @@ public class Principal {
 
 			case 11:
 				System.out.println("Caso de uso ainda não implementado - Tiago");
+				System.out.println("Teste");
 			case 12:
 				System.out.println("Caso de uso ainda não implementado - Tiago");
 			case 13:
