@@ -32,7 +32,7 @@ public class Principal {
 		ClienteServico clienteServico = ServicoFactory.criarClienteServico();
 		EmpresaServico empresaServico = ServicoFactory.criarEmpresaServico();
 		MotoTaxistaServico motoTaxistaServico = ServicoFactory.criarMotoTaxistaServico();
-		
+
 		do {
 			op = Tela.menu(sc);
 
@@ -128,5 +128,7 @@ public class Principal {
 			}
 
 		} while (op != 14);
+
 	}
+
 }
