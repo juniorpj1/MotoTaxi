@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import dominio.Cliente;
 import dominio.Empresa;
 import dominio.MotoTaxista;
 import servico.AvaliacaoServico;
@@ -98,7 +99,22 @@ public class Principal {
 			case 8:
 				System.out.println("Caso de uso ainda não implementado - Bruno");
 			case 9:
-				System.out.println("Caso de uso ainda não implementado - Diego");
+				System.out.println("Digite seu nome completo: ");
+				String nomeCliente = sc.nextLine();
+				System.out.println("Digite seu telefone de contato: ");
+				String telefone = sc.nextLine();
+				System.out.println("Digite seu CPF: ");
+				String cpf = sc.nextLine();
+				System.out.println("Digite uma senha de 6 digitos: ");
+				String senha = sc.nextLine();
+				
+				Cliente c = new Cliente(null,nomeCliente,telefone,cpf,senha);
+				
+				clienteServico.inserirAtualizar(c);
+				System.out.println("Sr(a) " + nomeCliente + " você foi cadastrado com sucesso!");
+				System.out.println("Seu código de cadastro é: " + c.getCodCliente());
+				
+				break;
 			case 10:
 				System.out.println("UC10: Pesquisar MotoTaxistas");
 				System.out.println("\nDigite o nome do moto taxista: ");
