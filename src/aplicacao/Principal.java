@@ -27,6 +27,7 @@ import servico.impl.EmpresaServicoImpl;
 @SuppressWarnings("unused")
 public class Principal {
 
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws ParseException {
 
 		Scanner sc = new Scanner(System.in);
