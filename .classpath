@@ -6,12 +6,12 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jpa-hibernate">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/connector">
 		<attributes>
 			<attribute name="owner.project.facets" value="jpt.jpa"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mysql-connector">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hibernate">
 		<attributes>
 			<attribute name="owner.project.facets" value="jpt.jpa"/>
 		</attributes>
