@@ -50,6 +50,7 @@ public class Principal {
 
 				if (emp == null) {
 					System.out.println("Código Inexistente!");
+
 				} else {
 					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 					System.out.println("\nInforme a Data Inicial: ");
@@ -69,16 +70,16 @@ public class Principal {
 				double media = 0.0;
 				System.out.println("\nEntre com o valor da média : ");
 				media = Double.parseDouble(sc.nextLine());
-				
+
 				Empresa emp1 = new Empresa();
-				
-				if(emp1.mototaxistasComMediaAbaixoDe(media) != null){
+
+				if (emp1.mototaxistasComMediaAbaixoDe(media) != null) {
 					List<MotoTaxista> mot2 = motoTaxistaServico.buscarTodos();
 					System.out.println(mot2);
-				}else{
+				} else {
 					System.out.println("Não há nenhum mototaxista abaixo da média");
 				}
-				
+
 				break;
 			case 3:
 				System.out.println("Caso de uso ainda não implementado - Diego");
@@ -104,9 +105,9 @@ public class Principal {
 			case 7:
 				String endOrigem, endDestino;
 				Double distancia;
-				int cliente,mototaxista, codigo1;
+				int cliente, mototaxista, codigo1;
 				Bandeirada b;
-				do{
+				do {
 					System.out.println("\nEscolha uma das opções do menu abaixo:");
 					System.out.println("1 - Inserir");
 					System.out.println("2 - Alterar");
@@ -116,7 +117,7 @@ public class Principal {
 					opcao = Integer.parseInt(sc.nextLine());
 
 					switch (opcao) {
-					case 1:	
+					case 1:
 						System.out.println("Digite o endereço de origem: ");
 						endOrigem = sc.nextLine();
 						System.out.println("Digite o endereço de destino: ");
@@ -125,28 +126,28 @@ public class Principal {
 						distancia = Double.parseDouble(sc.nextLine());
 						System.out.println("Informe seu código de cliente: ");
 						cliente = Integer.parseInt(sc.nextLine());
-						
+
 						Cliente cli = clienteServico.buscar(cliente);
-						Date agora = new java.util.Date(); 
-						
-						if(cli == null){
+						Date agora = new java.util.Date();
+
+						if (cli == null) {
 							System.out.println("Erro: Código do cliente não encontrado. Forneça um código válido!!!");
-						}else{
+						} else {
 							System.out.println("Informe o código do mototaxista: ");
-							mototaxista= Integer.parseInt(sc.nextLine());
-							
+							mototaxista = Integer.parseInt(sc.nextLine());
+
 							MotoTaxista mot = motoTaxistaServico.buscar(mototaxista);
-							if(mot == null){
-								System.out.println("Erro: Código do mototaxista não encontrado. Forneça um código válido!!!");
-							}else{ 
-								if(agora.getHours() > 18){
+							if (mot == null) {
+								System.out.println(
+										"Erro: Código do mototaxista não encontrado. Forneça um código válido!!!");
+							} else {
+								if (agora.getHours() > 18) {
 									b = bandeiradaServico.buscar(1);
-								}
-								else{
+								} else {
 									b = bandeiradaServico.buscar(2);
 								}
-								
-								Chamado cha = new Chamado(null,endOrigem,endDestino,agora,distancia,cli,mot,b);
+
+								Chamado cha = new Chamado(null, endOrigem, endDestino, agora, distancia, cli, mot, b);
 								try {
 									chamadoServico.inserirChamado(cha);
 									System.out.println("Chamado criado com sucesso!!!");
@@ -156,15 +157,16 @@ public class Principal {
 							}
 						}
 						break;
-					case 2:		
+					case 2:
+
 						System.out.println("Digite o código do chamado: ");
 						codigo1 = Integer.parseInt(sc.nextLine());
-						
+
 						Chamado c = chamadoServico.buscar(codigo1);
-						
-						if(c == null){
-							
-						}else{
+
+						if (c == null) {
+
+						} else {
 							System.out.println("Digite o endereço de origem: ");
 							endOrigem = sc.nextLine();
 							System.out.println("Digite o endereço de destino: ");
@@ -173,28 +175,34 @@ public class Principal {
 							distancia = Double.parseDouble(sc.nextLine());
 							System.out.println("Informe seu código de cliente: ");
 							cliente = Integer.parseInt(sc.nextLine());
-							
+
 							Cliente cli1 = clienteServico.buscar(cliente);
-							Date agora2 = new java.util.Date(); 
-							
-							if(cli1 == null){
-								System.out.println("Erro: Código do cliente não encontrado. Forneça um código válido!!!");
-							}else{
+							Date agora2 = new java.util.Date();
+
+							if (cli1 == null) {
+
+								System.out
+										.println("Erro: Código do cliente não encontrado. Forneça um código válido!!!");
+
+							} else {
+
 								System.out.println("Informe o código do mototaxista: ");
-								mototaxista= Integer.parseInt(sc.nextLine());
-								
+								mototaxista = Integer.parseInt(sc.nextLine());
+
 								MotoTaxista mot = motoTaxistaServico.buscar(mototaxista);
-								if(mot == null){
-									System.out.println("Erro: Código do mototaxista não encontrado. Forneça um código válido!!!");
-								}else{ 
-									if(agora2.getHours() > 18){
+								if (mot == null) {
+									System.out.println(
+											"Erro: Código do mototaxista não encontrado. Forneça um código válido!!!");
+								} else {
+									if (agora2.getHours() > 18) {
 										b = bandeiradaServico.buscar(1);
-									}
-									else{
+									} else {
 										b = bandeiradaServico.buscar(2);
 									}
-									
-									Chamado cha = new Chamado(codigo1,endOrigem,endDestino,agora2,distancia,cli1,mot,b);
+
+									Chamado cha = new Chamado(codigo1, endOrigem, endDestino, agora2, distancia, cli1,
+											mot, b);
+
 									try {
 										chamadoServico.inserirChamado(cha);
 										System.out.println("Chamado alterado com sucesso!!!");
@@ -203,56 +211,57 @@ public class Principal {
 									}
 								}
 							}
-						}				
+						}
 						break;
 					case 3:
 						System.out.println("Digite o código do chamado a ser pesquisado:");
 						codigo1 = Integer.parseInt(sc.nextLine());
-						
+
 						Chamado ch = chamadoServico.buscar(codigo1);
-						
-								if(ch == null){
-									System.out.println("Erro: Chamado não encontrada. Digite outro valor válido!!!");
-		
-								}else{
-									System.out.println("Código do chamado: " + ch.getCodChamado());
-									System.out.println("Endereço de Origem: " + ch.getOrigem());
-									System.out.println("Endereço de Destino: " + ch.getDestino());
-									System.out.println("Hora do Chamado: " + ch.getDataHora());
-									System.out.println("Distância Aproximada em KM: " + ch.getDistancia());
-									System.out.println("Nome do Cliente: " + ch.getCliente().getNome());
-									System.out.println("Nome do Mototaxista: " + ch.getMotoTaxista().getNome());
-									System.out.println("Valor Básico da Bandeirada: R$ " + ch.getBandeirada().getValorInicial());
-							}
+
+						if (ch == null) {
+							System.out.println("Erro: Chamado não encontrada. Digite outro valor válido!!!");
+
+						} else {
+							System.out.println("Código do chamado: " + ch.getCodChamado());
+							System.out.println("Endereço de Origem: " + ch.getOrigem());
+							System.out.println("Endereço de Destino: " + ch.getDestino());
+							System.out.println("Hora do Chamado: " + ch.getDataHora());
+							System.out.println("Distância Aproximada em KM: " + ch.getDistancia());
+							System.out.println("Nome do Cliente: " + ch.getCliente().getNome());
+							System.out.println("Nome do Mototaxista: " + ch.getMotoTaxista().getNome());
+							System.out
+									.println("Valor Básico da Bandeirada: R$ " + ch.getBandeirada().getValorInicial());
+						}
 						break;
 					case 4:
 						System.out.println("Digite o código do chamado:");
 						codigo1 = Integer.parseInt(sc.nextLine());
-						
+
 						Chamado cha = chamadoServico.buscar(codigo1);
-						
-								if(cha == null){
-									System.out.println("Erro: Chamado não encontrado. Digite outro valor válido!!!");
-		
-								}else{
-									chamadoServico.excluir(cha);
-									System.out.println("Chamado excluído com sucesso!!!");
-							}
+
+						if (cha == null) {
+							System.out.println("Erro: Chamado não encontrado. Digite outro valor válido!!!");
+
+						} else {
+							chamadoServico.excluir(cha);
+							System.out.println("Chamado excluído com sucesso!!!");
+						}
 						break;
 					case 5:
 						System.out.println("**** ALTERAÇÕES NOS CHAMADOS FINALIZADAS COM SUCESSO!!!****\n");
 						break;
-						
+
 					default:
 						System.out.println("Opção inválida!!!");
 					}
-				} while(opcao != 5);
+				} while (opcao != 5);
 				break;
 			case 8:
 				BigDecimal valor6, valor7;
 				Double v6, v7;
 				int codigo;
-				do{
+				do {
 					System.out.println("\nEscolha uma das opções do menu abaixo:");
 					System.out.println("1 - Inserir");
 					System.out.println("2 - Alterar");
@@ -260,82 +269,83 @@ public class Principal {
 					System.out.println("4 - Excluir");
 					System.out.println("5 - Sair");
 					opcao = Integer.parseInt(sc.nextLine());
-					
+
 					switch (opcao) {
-					case 1:									
+					case 1:
 						System.out.println("Digite o valor inicial:");
 						v6 = Double.parseDouble(sc.nextLine());
 						System.out.println("Digite o valor por KM rodado:");
 						v7 = Double.parseDouble(sc.nextLine());
-						
+
 						valor6 = new BigDecimal(v6);
 						valor7 = new BigDecimal(v7);
-						
+
 						Bandeirada band = new Bandeirada(null, valor6, valor7);
 						bandeiradaServico.inserirAtualizar(band);
-						
+
 						break;
-					case 2:		
+					case 2:
 						System.out.println("Digite o código da bandeirada:");
 						codigo = Integer.parseInt(sc.nextLine());
-						
+
 						Bandeirada bande = bandeiradaServico.buscar(codigo);
-						
-								if(bande == null){
-									System.out.println("Erro: Bandeirada não encontrada. Encontre outro valor!!!");
-		
-								}else{
-									System.out.println("Digite o novo valor inicial:");
-									v6 = Double.parseDouble(sc.nextLine());
-									System.out.println("Digite o novo valor por KM rodado:");
-									v7 = Double.parseDouble(sc.nextLine());
-									
-									valor6 = new BigDecimal(v6);
-									valor7 = new BigDecimal(v7);
-									
-									Bandeirada bandei = new Bandeirada(codigo, valor6, valor7);
-									bandeiradaServico.inserirAtualizar(bandei);
-									System.out.println("Bandeirada " + bandei.getCodBandeirada() + "alterado com sucesso!!!");
-							}
+
+						if (bande == null) {
+
+							System.out.println("Erro: Bandeirada não encontrada. Encontre outro valor!!!");
+
+						} else {
+							System.out.println("Digite o novo valor inicial:");
+							v6 = Double.parseDouble(sc.nextLine());
+							System.out.println("Digite o novo valor por KM rodado:");
+							v7 = Double.parseDouble(sc.nextLine());
+
+							valor6 = new BigDecimal(v6);
+							valor7 = new BigDecimal(v7);
+
+							Bandeirada bandei = new Bandeirada(codigo, valor6, valor7);
+							bandeiradaServico.inserirAtualizar(bandei);
+							System.out.println("Bandeirada " + bandei.getCodBandeirada() + "alterado com sucesso!!!");
+						}
 						break;
 					case 3:
 						System.out.println("Digite o código da bandeirada:");
 						codigo = Integer.parseInt(sc.nextLine());
-						
+
 						Bandeirada bandeir = bandeiradaServico.buscar(codigo);
-						
-								if(bandeir == null){
-									System.out.println("Erro: Bandeirada não encontrada. Digite outro valor válido!!!");
-		
-								}else{
-									bandeiradaServico.buscar(codigo);
-									System.out.println("Código da bandeirada:" + bandeir.getCodBandeirada());
-									System.out.println("Valor inicial:" + bandeir.getValorInicial());
-									System.out.println("Valor do KM rodado:" + bandeir.getValorKM());
-							}
+
+						if (bandeir == null) {
+							System.out.println("Erro: Bandeirada não encontrada. Digite outro valor válido!!!");
+
+						} else {
+							bandeiradaServico.buscar(codigo);
+							System.out.println("Código da bandeirada:" + bandeir.getCodBandeirada());
+							System.out.println("Valor inicial:" + bandeir.getValorInicial());
+							System.out.println("Valor do KM rodado:" + bandeir.getValorKM());
+						}
 						break;
 					case 4:
 						System.out.println("Digite o código da bandeirada:");
 						codigo = Integer.parseInt(sc.nextLine());
-						
+
 						Bandeirada bandeira = bandeiradaServico.buscar(codigo);
-						
-								if(bandeira == null){
-									System.out.println("Erro: Bandeirada não encontrada. Digite outro valor válido!!!");
-		
-								}else{
-									bandeiradaServico.excluir(bandeira);
-									System.out.println("Bandeirada excluída com sucesso!!!");
-							}
+
+						if (bandeira == null) {
+							System.out.println("Erro: Bandeirada não encontrada. Digite outro valor válido!!!");
+
+						} else {
+							bandeiradaServico.excluir(bandeira);
+							System.out.println("Bandeirada excluída com sucesso!!!");
+						}
 						break;
 					case 5:
 						System.out.println("**** ALTERAÇÕES NAS BANDEIRADAS FINALIZADAS COM SUCESSO!!!****\n");
 						break;
-						
+
 					default:
 						System.out.println("Opção inválida!!!");
 					}
-				} while(opcao != 5);
+				} while (opcao != 5);
 				break;
 			case 9:
 				System.out.println("Caso de uso ainda não implementado - Diego");
@@ -372,7 +382,6 @@ public class Principal {
 			}
 
 		} while (op != 14);
-		
 
 	}
 
